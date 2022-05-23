@@ -24,11 +24,11 @@ const cartReducer = (state, action) => {
     } else {
       updatedItems = state.items.concat(action.item);
     }
-    const updateadTotalAmount =
+    const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
     return {
       items: updatedItems,
-      totalAmount: updateadTotalAmount,
+      totalAmount: updatedTotalAmount,
     };
   }
   if (action.type === "REMOVE") {
@@ -68,7 +68,7 @@ const CartProvider = (props) => {
     });
   };
 
-  const removeItemToCartHandler = (id) => {
+  const removeItemFromCartHandler = (id) => {
     dispatchCartAction({
       type: "REMOVE",
       id: id,
@@ -79,7 +79,7 @@ const CartProvider = (props) => {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
-    removeItem: removeItemToCartHandler,
+    removeItem: removeItemFromCartHandler,
   };
 
   return (
